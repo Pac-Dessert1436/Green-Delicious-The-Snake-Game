@@ -9,6 +9,6 @@ part of the entire project.
 The only limitation of this project is that the background music and the sound
 effects can't be played simutaneously, owing to the SoundPlayer class.
 
-![](title_screen.png)
-
 __The project's executable can be found in the path: ./bin/Debug/net7.0-windows/__
+
+![](title_screen.png)
