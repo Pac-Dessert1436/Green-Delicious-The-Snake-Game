@@ -1,4 +1,5 @@
 ﻿Imports System.Drawing.Text
+Imports System.IO
 Imports System.Media
 
 ''' <summary>
@@ -13,19 +14,19 @@ Friend Module SnakeGameRequisites
     Friend ReadOnly Property Commodore64T As FontFamily
         Get
             Dim fontCollection As New PrivateFontCollection
-            fontCollection.AddFontFile("../../../assets/commodore-64t.ttf")
+            fontCollection.AddFontFile("assets/commodore-64t.ttf")
             Return fontCollection.Families(0)
         End Get
     End Property
 
-    Friend Enum Directions : Up : Down : Left : Right : End Enum
+    Friend Enum Directions As Byte : Up : Down : Left : Right : End Enum
 
     Private Function CreateImageByName(imageName As String) As Image
-        Return Image.FromFile($"../../../assets/{imageName}.png")
+        Return Image.FromFile($"assets/{imageName}.png")
     End Function
 
     Private Function CreateAudioByName(audioName As String) As SoundPlayer
-        Return New SoundPlayer($"../../../assets/{audioName}.wav")
+        Return New SoundPlayer($"assets/{audioName}.wav")
     End Function
 
     Friend ReadOnly snakeHeadAnimation1 As New List(Of Image) From {
@@ -88,6 +89,18 @@ Public Class frmMain
     Private lblHighestScore As New Label
     Private lblStartGamePrompt As New Label
     Private lblGameTitle As New Label
+
+    Shared Sub New()
+        Dim assetPath As String = Path.GetFullPath("../../../assets")
+        Dim targetPath As String = Path.GetFullPath("assets")
+        If Directory.Exists(targetPath) Then Exit Sub
+        Directory.CreateDirectory(targetPath)
+        Dim assets As String() = Directory.GetFiles(assetPath)
+        For Each asset As String In assets
+            Dim fileName As String = Path.GetFileName(asset)
+            File.Copy(asset, Path.Combine(targetPath, fileName), True)
+        Next asset
+    End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Text = "Green Delicious -- The Snake Game"
