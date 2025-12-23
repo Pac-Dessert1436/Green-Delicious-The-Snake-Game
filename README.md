@@ -1,25 +1,33 @@
-# Green Delicious -- The Snake Game 
-
-This mini-game is carefully written for three days as a WinForms project.
-
-Basic code of the project was provided by artificial intelligence, but after that
-I was dedicated to enriching and refactoring code, and therefore the A.I. only did
-a small part of the entire project.
-
-The only limitation of this project is that the background music and the sound
-effects can't be played simutaneously, owing to the SoundPlayer class.
-
-__The project's executable can be found in the path: ./bin/Debug/net7.0-windows/__
+# Green Delicious - The Snake Game
 
 ![](title_screen.png)
 
-### Latest Update:
+## Description
 
-It's not until today that I could find the disadvantage of locating the "assets"
-folder only by means of its relative path, so I've added the *__shared constructor__*
-to the "frmMain" class as follows, which copies the whole folder to the directory of
-the executable. _Accessing the game assets are made easier for the Winforms project_
-_thanks to such a trick, for my part._
+This mini-game is a VB.NET WinForms project developed over three days. First uploaded to GitHub in March 2024, it has since undergone minor refinements, including the configuration of the `DoubleBuffered` property to improve rendering smoothness.
 
-![](code_update.png)
+While the project's basic code skeleton was initially generated with AI assistance, the majority of the work (including feature enrichment and code refactoring) was completed independently. AI only contributed a small portion of the overall project.
+
+Known Limitations:
+- Background music and sound effects cannot play simultaneously, due to limitations of WinForms' built-in SoundPlayer class.
+- No pause functionality or persistent high score saving is available.
+
+Prerequisite: [.NET SDK 8.0+](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) is required to compile and run the project.
+
+## How to Play
+
+1. Clone this repository and navigate to the project directory:
+``` bash
+git clone https://github.com/Pac-Dessert1436/Green-Delicious-The-Snake-Game
+cd Green-Delicious-The-Snake-Game
+```
+2. Open the project in your preferred IDE, like Visual Studio 2022 or VS Code.
+3. Build and run the project: Use the dotnet run command in the terminal, or click the "Run" button in your IDE.
+4. Start the game: Press "Enter" to begin with background music, or "Space" to start with sound effects.
+5. Gameplay: Control the snake using the arrow keys. Collect red apples to earn points. Occasional golden apples will grant double points.
+6. Game Over: The game ends if the snake collides with the wall or bites its own body.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
